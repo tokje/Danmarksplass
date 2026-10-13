@@ -61,6 +61,7 @@ for ax, p in zip(axs, ["PM10", "PM2.5", "NO2"]):
     low = annual[("n_valid", p)] < MIN_VALID           # flag poorly covered years
     ax.plot(annual.index[low], annual[("mean", p)][low], "rx", ms=10, label=f"< {MIN_VALID} valid days")
     ax.set_ylabel(f"{p} (µg m$^{{-3}}$)"); ax.legend()
+axs[2].axhline(40, color="k", ls=":")
 fig.tight_layout(); fig.savefig(OUT + "fig_annual.png", dpi=200)
 
 # --------------------------- 3. High / very high days (Table 1 thresholds)
